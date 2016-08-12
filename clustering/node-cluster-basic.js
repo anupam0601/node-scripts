@@ -1,4 +1,4 @@
-// Clustering basic example
+// Clustering basic example with cluster module
 
 var cluster = require('cluster');  
 var http    = require('http');  
@@ -24,5 +24,7 @@ if (cluster.isMaster) {
     res.writeHead(200);
     // Sends the pid of the worker that is serving the request
     res.end('process ' + process.pid + ' says hello!'); 
-  }).listen(8080);
+  }).listen(8080,function(){
+    console.log('Process ' + process.pid + ' is listening to all incoming requests')
+  });
 }
